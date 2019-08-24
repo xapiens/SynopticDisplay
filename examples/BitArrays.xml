@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.GenericContainer" maxInputs="64" maxOutputs="64" minInputs="0" minOutputs="0" xmlns="http://synoptic.fnal.gov/2008/display">
+    <property caption="X" name="x" required="true" type="integer" value="0"/>
+    <property caption="Y" name="y" required="true" type="integer" value="0"/>
+    <property caption="Width" name="width" required="true" type="integer" value="600"/>
+    <property caption="Height" name="height" required="true" type="integer" value="400"/>
+    <property caption="Background Color" name="background" required="false" type="color" value="white"/>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/VerticalBitArray" id="4" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.VerticalBitArray" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Bit Array-Vertical">
+        <desc>An vertical set of bits;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="60"/>
+        <property caption="Y" name="y" required="true" type="integer" value="140"/>
+        <property caption="Width" name="width" required="true" type="integer" value="30"/>
+        <property caption="Height" name="height" required="true" type="integer" value="150"/>
+        <property caption="Border" name="border" required="false" type="color" value="black"/>
+        <property caption="Border Width" name="borderWidth" required="true" type="double" value="1.0"/>
+        <property caption="Number of Bits" name="numBits" required="true" type="integer" value="5"/>
+        <property caption="Arrange Backwards" name="backwards" required="true" type="boolean" value="false"/>
+        <property caption="'0' Color" name="fillColor0" required="false" type="color" value="limegreen"/>
+        <property caption="'1' Color" name="fillColor1" required="false" type="color" value="crimson"/>
+        <input number="0" x="0.4827586" y="0.0"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/HorizontalBitArray" id="5" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.HorizontalBitArray" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Bit Array-Horizontal">
+        <desc>An horizontal set of bits;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="370"/>
+        <property caption="Y" name="y" required="true" type="integer" value="140"/>
+        <property caption="Width" name="width" required="true" type="integer" value="150"/>
+        <property caption="Height" name="height" required="true" type="integer" value="30"/>
+        <property caption="Border" name="border" required="false" type="color" value="black"/>
+        <property caption="Border Width" name="borderWidth" required="true" type="double" value="1.0"/>
+        <property caption="Number of Bits" name="numBits" required="true" type="integer" value="5"/>
+        <property caption="Arrange Backwards" name="backwards" required="true" type="boolean" value="false"/>
+        <property caption="'0' Color" name="fillColor0" required="false" type="color" value="limegreen"/>
+        <property caption="'1' Color" name="fillColor1" required="false" type="color" value="crimson"/>
+        <input number="0" x="0.11409396" y="0.0"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.SimulationComponent" help-url="/SawtoothSimulatedSource" id="6" implementation="gov.fnal.controls.applications.synoptic.runtime.simulation.SawtoothWaveGenerator" maxInputs="0" maxOutputs="64" minInputs="0" minOutputs="1" name="Sawtooth">
+        <desc>Sawtooth signal generator;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="50"/>
+        <property caption="Y" name="y" required="true" type="integer" value="50"/>
+        <property caption="Width" name="width" required="true" type="integer" value="470"/>
+        <property caption="Height" name="height" required="true" type="integer" value="20"/>
+        <property caption="Offset" name="offset" required="true" type="double" value="16.0"/>
+        <property caption="Amplitude" name="amplitude" required="true" type="double" value="16.0"/>
+        <property caption="Period, s." name="period" required="true" type="double" value="64.0"/>
+        <property caption="Phase, °" name="phase" required="true" type="double" value="-180.0"/>
+        <property caption="Data Tag" name="tag" required="false" type="string"/>
+        <output number="1" x="0.50959486" y="1.0"/>
+        <output number="2" x="0.96801704" y="1.0"/>
+        <output number="3" x="0.30916846" y="1.0"/>
+        <output number="4" x="0.053304903" y="1.0"/>
+        <output number="5" x="0.71428573" y="1.0"/>
+    </element>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <text fill="midnightblue" font-size="16" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,250,36)">Bit Arrays</text>
+    </svg>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/HorizontalBitArray" id="7" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.HorizontalBitArray" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Bit Array-Horizontal">
+        <desc>An horizontal set of bits;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="370"/>
+        <property caption="Y" name="y" required="true" type="integer" value="240"/>
+        <property caption="Width" name="width" required="true" type="integer" value="150"/>
+        <property caption="Height" name="height" required="true" type="integer" value="30"/>
+        <property caption="Border" name="border" required="false" type="color" value="black"/>
+        <property caption="Border Width" name="borderWidth" required="true" type="double" value="1.0"/>
+        <property caption="Number of Bits" name="numBits" required="true" type="integer" value="5"/>
+        <property caption="Arrange Backwards" name="backwards" required="true" type="boolean" value="true"/>
+        <property caption="'0' Color" name="fillColor0" required="false" type="color" value="limegreen"/>
+        <property caption="'1' Color" name="fillColor1" required="false" type="color" value="crimson"/>
+        <input number="0" x="1.0" y="0.3448276"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/VerticalBitArray" id="8" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.VerticalBitArray" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Bit Array-Vertical">
+        <desc>An vertical set of bits;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="180"/>
+        <property caption="Y" name="y" required="true" type="integer" value="140"/>
+        <property caption="Width" name="width" required="true" type="integer" value="30"/>
+        <property caption="Height" name="height" required="true" type="integer" value="150"/>
+        <property caption="Border" name="border" required="false" type="color" value="black"/>
+        <property caption="Border Width" name="borderWidth" required="true" type="double" value="1.0"/>
+        <property caption="Number of Bits" name="numBits" required="true" type="integer" value="5"/>
+        <property caption="Arrange Backwards" name="backwards" required="true" type="boolean" value="true"/>
+        <property caption="'0' Color" name="fillColor0" required="false" type="color" value="limegreen"/>
+        <property caption="'1' Color" name="fillColor1" required="false" type="color" value="crimson"/>
+        <input number="0" x="0.4827586" y="0.0"/>
+    </element>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <text fill="midnightblue" font-size="16" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,100,106)">Vertical</text>
+        <text fill="midnightblue" font-size="16" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,395,106)">Horizontal</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,95,281)">1</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,95,219)">4</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,95,189)">8</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,95,249)">2</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,95,159)">16</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,215,159)">1</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,215,249)">8</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,215,279)">16</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,215,219)">4</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,215,189)">2</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,410,289)">2</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,440,289)">4</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,495,289)">16</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,470,289)">8</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,380,289)">1</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,500,189)">1</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,375,189)">16</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,440,189)">4</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,410,189)">8</text>
+        <text fill="midnightblue" font-size="14" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,470,189)">2</text>
+        <text fill="midnightblue" font-size="12" font-style="italic" font-weight="normal" transform="matrix(1,0,0,1,450,232)">(backward)</text>
+        <text fill="midnightblue" font-size="12" font-style="italic" font-weight="normal" transform="matrix(1,0,0,1,160,307)">(backward)</text>
+    </svg>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/DecimalDisplay" id="9" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.NumDisplay" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Decimal Display">
+        <desc>A simple display showing formatted decimal numbers; </desc>
+        <property caption="X" name="x" required="true" type="integer" value="250"/>
+        <property caption="Y" name="y" required="true" type="integer" value="190"/>
+        <property caption="Width" name="width" required="true" type="integer" value="80"/>
+        <property caption="Height" name="height" required="true" type="integer" value="30"/>
+        <property caption="Border" name="border" required="false" type="color"/>
+        <property caption="Border Width" name="borderWidth" required="true" type="double" value="1.0"/>
+        <property caption="Background" name="background" required="false" type="color"/>
+        <property caption="Text Color" name="textColor" required="true" type="color" value="black"/>
+        <property caption="Font Size" name="fontSize" required="true" type="integer" value="20"/>
+        <property caption="Italic Font" name="isItalicFont" required="true" type="boolean" value="false"/>
+        <property caption="Bold Font" name="isBoldFont" required="true" type="boolean" value="true"/>
+        <property caption="Alignment" name="align" required="true" type="alignment" value="CENTER"/>
+        <property caption="Decimal Format" name="format" required="true" type="string" value="#0"/>
+        <input number="0" x="0.48101267" y="0.0"/>
+    </element>
+    <link path="M 75 69 L 74 140 " source="6" source_pin="4" target="4" target_pin="0"/>
+    <link path="M 195 69 L 194 140 " source="6" source_pin="3" target="8" target_pin="0"/>
+    <link path="M 385 69 L 387 140 " source="6" source_pin="5" target="5" target_pin="0"/>
+    <link path="M 504 69 L 550 125 L 545 230 L 519 250 " source="6" source_pin="2" target="7" target_pin="0"/>
+    <link path="M 289 69 L 288 190 " source="6" source_pin="1" target="9" target_pin="0"/>
+</element>

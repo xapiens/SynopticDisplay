@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: segment12.xml,v 1.2 2010/09/15 16:36:31 apetrov Exp $ -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:syndi="http://synoptic.fnal.gov/2008/display"
+        syndi:help-url="/StaticImages">
+    <title>&#189; Segment</title>
+    <syndi:icon mime-type="image/png">
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAPElEQVR42mNgGAWjAAn8x4Kp
+        aig+ebINpon6/xT6mGaGE2UGTS34T+UUN8ws+E+jjElfC2iBR8EoGAoAAF84M80IxMuGAAAA
+        AElFTkSuQmCC
+    </syndi:icon>
+    <g stroke="black" fill="none" stroke-width="1">
+        <path d="M0 30C0 13.432 13.432 0 30 0C46.569 0 60 13.432 60 30Z"/>
+    </g>
+</svg>

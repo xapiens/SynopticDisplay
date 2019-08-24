@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: SingleLine.xml,v 1.2 2010/09/15 16:36:31 apetrov Exp $ -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:syndi="http://synoptic.fnal.gov/2008/display"
+        syndi:help-url="/StaticImages">
+    <title>Line - Single</title>
+    <syndi:icon mime-type="image/png">
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQMAAADaua+7AAAABlBMVEX///8AAABVwtN+AAAA
+        AXRSTlMAQObYZgAAABNJREFUeNpjYCAeMP5n+M9AIgAAZDACAIuzMYoAAAAASUVORK5CYII=
+    </syndi:icon>
+    <path fill="none" stroke="black" stroke-width="1"/>
+</svg>

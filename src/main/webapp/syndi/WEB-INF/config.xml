@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+    (c) 2010 Fermi Research Alliance
+    $Id: config-sample.xml,v 1.3 2010/09/16 15:25:50 apetrov Exp $
+
+    WEBAPP CONFIGURATION FILE
+-->
+
+<configuration>
+
+    <properties>
+
+        <!-- IMPORTANT: SET THIS PROPERTY BEFORE USING SYNOPTIC WEBAPP -->
+        <!-- Location of display files on the server -->
+        <entry>
+            <key>Synoptic.file-repository-root</key>
+            <value>/home/synoptic/repository</value>
+        </entry>
+
+        <!-- Root URL of the central repository -->
+        <entry>
+            <key>Synoptic.repository-root</key>
+            <value>http://localhost:8000/syndi</value>
+        </entry>
+
+        <!-- List of HTTP proxy servers -->
+        <!--
+        <entry>
+            <key>Synoptic.proxies</key>
+            <value>proxy.example.com</value>
+        </entry>
+        -->
+
+        <!-- Company logo. Recommended size is 100(W) x 18(H) -->
+        <!--
+        <entry>
+            <key>Synoptic.logo</key>
+            <value>images/logo.png</value>
+        </entry>
+        -->
+
+        <entry>
+            <key>Synoptic.disclaimer</key>
+            <value>
+                &#169; 2010 Good Examples, Inc. |
+                &lt;a href="http://www.example.com/privacy.html"&gt;Privacy&lt;/a&gt;
+            </value>
+        </entry>
+
+    </properties>
+
+</configuration>

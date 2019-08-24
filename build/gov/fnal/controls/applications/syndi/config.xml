@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+    (c) 2001-2010 Fermi Research Alliance
+    $Id: config.xml,v 1.9 2010/09/23 15:54:38 apetrov Exp $
+
+    MAIN CONFIGURATION FILE.
+-->
+
+<configuration>
+
+    <!--
+        The 'properties' part is used to set up Java environment variables. Each
+        value is inserted into the generic property map, i.e. that obtained via
+        System.getProperties(), unless it is specified in the application's
+        command line.
+    -->
+
+    <properties>
+
+        <!-- Global version number -->
+        <entry>
+            <key>Synoptic.version</key>
+            <value>4.3.2</value>
+        </entry>
+
+        <!-- URL that is opened by the help menu -->
+        <entry>
+            <key>Synoptic.help-url</key>
+            <value>http://synoptic.fnal.gov/doc/index.html</value>
+        </entry>
+
+        <!-- Root URL of the central repository -->
+        <!--
+        <entry>
+            <key>Synoptic.repository-root</key>
+            <value>http://localhost:8000/syndi</value>
+        </entry>
+        -->
+
+        <!-- Root URL for component help files -->
+        <!--
+        <entry>
+            <key>Synoptic.component-help-root</key>
+            <value>http://www-bd.fnal.gov/issues/wiki</value>
+        </entry>
+        -->
+
+        <!-- Implementation of the data acquisition interface factory -->
+        <entry>
+            <key>Synoptic.daq</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.daq.mirror.MirrorInterfaceFactory</value>
+        </entry>
+
+        <!-- How often to update SVG data -->
+        <entry>
+            <key>Synoptic.svg-update-rate</key>
+            <value>2000</value>
+        </entry>
+
+        <!-- How many past SVG images are stored in a cache -->
+        <entry>
+            <key>Synoptic.svg-cache-size</key>
+            <value>16</value>
+        </entry>
+
+        <!-- How often the server will update static bitmaps nested inside SVG displays -->
+        <entry>
+            <key>Synoptic.bmp-update-rate</key>
+            <value>30000</value>
+        </entry>
+
+        <!-- How often the server will check whether versions of the running displays are current -->
+        <entry>
+            <key>Synoptic.version-check-rate</key>
+            <value>60000</value>
+        </entry>
+
+        <!-- Maximum time a display keeps running without user requests -->
+        <entry>
+            <key>Synoptic.display-idle-time</key>
+            <value>60000</value>
+        </entry>
+
+        <!-- Maximum time to start or stop a display. If the actual time exceed this limit, the task will be aborted -->
+        <entry>
+            <key>Synoptic.task-timeout</key>
+            <value>30000</value>
+        </entry>
+
+        <!-- Maximum number of working threads that start and stop displays -->
+        <entry>
+            <key>Synoptic.work-threads</key>
+            <value>1</value>
+        </entry>
+
+        <!--
+            Maximum time to wait for completion of all task upon server shutdown.
+            This value MUST to be less than a timeout in the external
+            Tomcat restarting script, so that the servlet container can always close
+            before the shall script terminates it forcefully.
+        -->
+        <entry>
+            <key>Synoptic.shutdown-timeout</key>
+            <value>10000</value>
+        </entry>
+
+        <!-- Put displays causing troubles in quarantine -->
+        <entry>
+            <key>Synoptic.quarantine-on-failure</key>
+            <value>false</value>
+        </entry>
+
+        <!-- Wheather to restart the server is a failed display holds the worker thread -->
+        <entry>
+            <key>Synoptic.restart-on-failure</key>
+            <value>true</value>
+        </entry>
+
+        <!-- A command to restart the server -->
+        <!--
+        <entry>
+            <key>Synoptic.restart-command</key>
+            <value>/usr/local/tomcat/bin/restart.sh &gt;/dev/null 2&gt;&amp;1 &amp;</value>
+        </entry>
+        -->
+
+        <!-- Location of the start banner -->
+        <entry>
+            <key>Synoptic.start-banner</key>
+            <value>/gov/fnal/controls/applications/syndi/runtime/start-banner.xml</value>
+        </entry>
+
+        <!-- Location of the error banner -->
+        <entry>
+            <key>Synoptic.error-banner</key>
+            <value>/gov/fnal/controls/applications/syndi/runtime/error-banner.xml</value>
+        </entry>
+
+        <!-- Name of SMTP server -->
+        <!--
+        <entry>
+            <key>mail.host</key>
+            <value>smtp.example.com</value>
+        </entry>
+        -->
+
+        <!-- Recipient of automated notifications -->
+        <!--
+        <entry>
+            <key>mail.recipient</key>
+            <value>synoptic-admin@example.com</value>
+        </entry>
+        -->
+
+        <!-- System administrator's email -->
+        <!--
+        <entry>
+            <key>mail.from</key>
+            <value>Synoptic &lt;synoptic@example.com&gt;</value>
+        </entry>
+        -->
+
+    </properties>
+
+    <property-map>
+
+        <entry>
+            <key>string</key>
+            <value>gov.fnal.controls.applications.syndi.property.StringProperty</value>
+        </entry>
+
+        <entry>
+            <key>double</key>
+            <value>gov.fnal.controls.applications.syndi.property.DoubleProperty</value>
+        </entry>
+
+        <entry>
+            <key>integer</key>
+            <value>gov.fnal.controls.applications.syndi.property.IntegerProperty</value>
+        </entry>
+
+        <entry>
+            <key>boolean</key>
+            <value>gov.fnal.controls.applications.syndi.property.BooleanProperty</value>
+        </entry>
+
+        <entry>
+            <key>color</key>
+            <value>gov.fnal.controls.applications.syndi.property.ColorProperty</value>
+        </entry>
+
+        <entry>
+            <key>orientation</key>
+            <value>gov.fnal.controls.applications.syndi.property.OrientationProperty</value>
+        </entry>
+
+        <entry>
+            <key>lineorientation</key>
+            <value>gov.fnal.controls.applications.syndi.property.LineOrientationProperty</value>
+        </entry>
+
+        <entry>
+            <key>alignment</key>
+            <value>gov.fnal.controls.applications.syndi.property.AlignmentProperty</value>
+        </entry>
+
+        <!--
+        <entry>
+            <key>devicename</key>
+            <value>gov.fnal.controls.applications.syndi.property.DeviceNameProperty</value>
+        </entry>
+        -->
+
+        <entry>
+            <key>uri</key>
+            <value>gov.fnal.controls.applications.syndi.property.URIProperty</value>
+        </entry>
+
+        <entry>
+            <key>valuemap</key>
+            <value>gov.fnal.controls.applications.syndi.property.ValueMapProperty</value>
+        </entry>
+
+        <entry>
+            <key>position</key>
+            <value>gov.fnal.controls.applications.syndi.property.PositionProperty</value>
+        </entry>
+
+    </property-map>
+
+    <!--
+        The 'component-paths' part contains a list of directories in the classpath
+        used to search for builder components, which will appear on the component
+        palette (left-hand side of the builder's frame). A trailing asterisk tells
+        the program to look into all subdirectories.
+    -->
+
+    <component-paths>
+
+        <entry>/gov/fnal/controls/applications/syndi/runtime/daq</entry>
+        <entry>/gov/fnal/controls/applications/syndi/runtime/embed</entry>
+        <entry>/gov/fnal/controls/applications/syndi/runtime/pipes</entry>
+        <entry>/gov/fnal/controls/applications/syndi/runtime/simulation</entry>
+        <entry>/gov/fnal/controls/applications/syndi/runtime/v11n</entry>
+        <entry>/gov/fnal/controls/applications/syndi/builder/glyph/*</entry>
+
+    </component-paths>
+
+    <!--
+        The 'component-map' part is used to relate old and new implementations of
+        certain Synoptic components. As the system evolves, classes have been moved
+        to different packages, merged, or deprecated. Older displays may include
+        references to obsolete stuff. Currently, the component factories consult
+        this map before creating a component. There is a single map for both runtime
+        and builder factories.
+    -->
+
+    <component-map>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.GenericComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.GenericComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.GenericContainer</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.GenericContainer</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.EmbeddedComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.EmbeddedComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.ArraySplitterComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.ArraySplitterComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.DaqComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.DaqComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.HyperlinkComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.HyperlinkComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.InvisibleComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.InvisibleComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.PipeComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.PipeComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.SimulationComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.SimulationComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent</key>
+            <value>gov.fnal.controls.applications.syndi.builder.element.variant.VisualComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.ArraySplitter</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.ArraySplitter</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.BitSplitter</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.Bitmask</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.BooleanDiscriminator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.Comparator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.Discriminator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.Discriminator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.ExpressionPipe</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.ExpressionPipe</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.Integrator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.Integrator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.Multiplexer</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.Multiplexer</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.RangeComparator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.RangeComparator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.Duplicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.Splitter</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.daq.SimpleReadingChannel</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.daq.SimpleReadingChannel</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.daq.SimpleSettingChannel</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.daq.SimpleSettingChannel</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.ConstantArray</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.ConstantArray</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.ConstantError</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.ConstantError</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.ConstantNumber</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.ConstantNumber</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.AmplitudeModulator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.AmplitudeModulator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.SawtoothWaveGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.SawtoothWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.SinusoidGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.SineWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.SquareWaveGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.SquareWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.simulation.TriangleWaveGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.TriangleWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.NumDisplayWithInput</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplayWithInput</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.NumDisplayWithPushButton</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplayWithPushButton</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.LookupDisplayWithControl</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.LookupDisplayWithControl</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.SpinnerControlWithControl</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.SpinnerControlWithControl</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.FormattedBooleanWithControl</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.BooleanDisplayWithControl</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Hyperlink</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.Hyperlink</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.InputField</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.InputField</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.PushButton</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.PushButton</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.HorizontalSlider</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.HorizontalSlider</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.VerticalSlider</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.VerticalSlider</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.SpinnerControl</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.SpinnerControl</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.ToggleButton</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.ToggleButton</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.embed.EmbeddedDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.embed.EmbeddedDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.HorizontalBarGauge</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.HorizontalBarGauge</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.VerticalBarGauge</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.VerticalBarGauge</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.ArrowDevice</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.DialGauge</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Barrel</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.LevelGauge</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.LookupDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.LookupDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.RawDataDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.RawDataDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.NumDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.TimestampDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TimestampDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.DateDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.WallClock</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.ArrowIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.ArrowIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.HorizontalBitArray</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.HorizontalBitArray</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.VerticalBitArray</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.VerticalBitArray</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.FormattedBoolean</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.BooleanDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Pump</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.CompressorIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Valve2</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.ControlValveIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.DoubleFanIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.DoubleFanIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Kolobok</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.EllipseIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.LineIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.AlarmIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.RectangleIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.SingleFanIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.SingleFanIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.SwitchIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.SwitchIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Trapezium</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TrapeziumIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Triangle</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TriangleIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Valve1</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.ValveIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.ACNET.ReadingJob</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.daq.SimpleReadingChannel</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.ACNET.SettingJob</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.daq.SimpleSettingChannel</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Chasy</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.ValveIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.ChasySRuchkoi</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.ControlValveIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.FormattedNumber</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Histogramm</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.UnsupportedComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.OneTimeFormattedNumber</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Pompa</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.CompressorIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.ShowTimedDouble</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.SnapScope1</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.UnsupportedComponent</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Thermometer</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.LevelGauge</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.visualization.Knob</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.VerticalSlider</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.mazay.AlarmIndicator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.RectangleIndicator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.mazay.DateDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.WallClock</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.mazay.NumDisplay</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.v11n.TextDisplay</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.Expression</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.ExpressionPipe</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.pipes.MultyInputExpression</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.pipes.ExpressionPipe</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.test.SinusoidGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.SineWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.test.SawtoothWaveGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.SawtoothWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.test.TriangleWaveGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.TriangleWaveGenerator</value>
+        </entry>
+
+        <entry>
+            <key>gov.fnal.controls.applications.synoptic.runtime.test.SquareWaveGenerator</key>
+            <value>gov.fnal.controls.applications.syndi.runtime.simulation.SquareWaveGenerator</value>
+        </entry>
+
+    </component-map>
+
+
+</configuration>

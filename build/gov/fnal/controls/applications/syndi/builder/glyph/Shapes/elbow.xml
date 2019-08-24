@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: elbow.xml,v 1.2 2010/09/15 16:36:31 apetrov Exp $ -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:syndi="http://synoptic.fnal.gov/2008/display"
+        syndi:help-url="/StaticImages">
+    <title>Elbow</title>
+    <syndi:icon mime-type="image/png">
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQMAAADaua+7AAAABlBMVEX///8AAABVwtN+AAAA
+        AXRSTlMAQObYZgAAAEhJREFUeNpjZPjPwMDQwMgEJBkYGcA0EyMQMwHZIkD6BAMDs8ABkDgT
+        WA6CWaA0B5QWAGIFoBYHJgbWBiYGIwYm5g4Ghj8MDAAUaAYbXz5eRAAAAABJRU5ErkJggg==
+    </syndi:icon>
+    <g stroke="black" fill="none" stroke-width="1">
+        <path d="M0 60 C33.136 60 60 33.136 60 0H20C20 11.045 11.045 20 0 20Z"/>
+    </g>
+</svg>

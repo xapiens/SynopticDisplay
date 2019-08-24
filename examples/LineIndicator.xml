@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.GenericContainer" maxInputs="64" maxOutputs="64" minInputs="0" minOutputs="0" xmlns="http://synoptic.fnal.gov/2008/display">
+    <property caption="X" name="x" required="true" type="integer" value="0"/>
+    <property caption="Y" name="y" required="true" type="integer" value="0"/>
+    <property caption="Width" name="width" required="true" type="integer" value="600"/>
+    <property caption="Height" name="height" required="true" type="integer" value="400"/>
+    <property caption="Background Color" name="background" required="false" type="color" value="white"/>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <text fill="midnightblue" font-size="16" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,190,36)">Line State Indicators</text>
+    </svg>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.SimulationComponent" help-url="/SquareSimulatedSource" id="9" implementation="gov.fnal.controls.applications.synoptic.runtime.simulation.SquareWaveGenerator" maxInputs="0" maxOutputs="64" minInputs="0" minOutputs="1" name="Square">
+        <desc>Square wave generator;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="55"/>
+        <property caption="Y" name="y" required="true" type="integer" value="50"/>
+        <property caption="Width" name="width" required="true" type="integer" value="520"/>
+        <property caption="Height" name="height" required="true" type="integer" value="10"/>
+        <property caption="Offset" name="offset" required="true" type="double" value="0.5"/>
+        <property caption="Amplitude" name="amplitude" required="true" type="double" value="0.5"/>
+        <property caption="Period, s." name="period" required="true" type="double" value="4.0"/>
+        <property caption="Phase, °" name="phase" required="true" type="double" value="0.0"/>
+        <property caption="Data Tag" name="tag" required="false" type="string"/>
+        <output number="8" x="0.49325627" y="1.0"/>
+    </element>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <text fill="dimgrey" font-size="12" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,390,127)">FORWARD_SLASH</text>
+        <text fill="dimgrey" font-size="12" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,270,342)">VERTICAL</text>
+        <text fill="dimgrey" font-size="12" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,90,222)">HORIZONTAL</text>
+        <text fill="dimgrey" font-size="12" font-style="normal" font-weight="normal" transform="matrix(1,0,0,1,390,312)">BACK_SLASH</text>
+    </svg>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="10" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.; </desc>
+        <property caption="X" name="x" required="true" type="integer" value="270"/>
+        <property caption="Y" name="y" required="true" type="integer" value="110"/>
+        <property caption="Width" name="width" required="true" type="integer" value="50"/>
+        <property caption="Height" name="height" required="true" type="integer" value="70"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="VERTICAL"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="0.71794873" y="0.0"/>
+        <output number="2" x="0.25641027" y="0.0"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="11" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="270"/>
+        <property caption="Y" name="y" required="true" type="integer" value="250"/>
+        <property caption="Width" name="width" required="true" type="integer" value="50"/>
+        <property caption="Height" name="height" required="true" type="integer" value="70"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="VERTICAL"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="0.25641027" y="1.0"/>
+        <output number="2" x="0.71794873" y="1.0"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="12" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="190"/>
+        <property caption="Y" name="y" required="true" type="integer" value="190"/>
+        <property caption="Width" name="width" required="true" type="integer" value="70"/>
+        <property caption="Height" name="height" required="true" type="integer" value="50"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="HORIZONTAL"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="0.0" y="0.33333334"/>
+        <output number="2" x="0.0" y="0.74358976"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="13" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="330"/>
+        <property caption="Y" name="y" required="true" type="integer" value="190"/>
+        <property caption="Width" name="width" required="true" type="integer" value="70"/>
+        <property caption="Height" name="height" required="true" type="integer" value="50"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="HORIZONTAL"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="1.0" y="0.71794873"/>
+        <output number="2" x="1.0" y="0.25641027"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="14" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.; </desc>
+        <property caption="X" name="x" required="true" type="integer" value="210"/>
+        <property caption="Y" name="y" required="true" type="integer" value="130"/>
+        <property caption="Width" name="width" required="true" type="integer" value="60"/>
+        <property caption="Height" name="height" required="true" type="integer" value="60"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="BACK_SLASH"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="0.4871795" y="0.0"/>
+        <output number="2" x="0.0" y="0.4871795"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="15" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="320"/>
+        <property caption="Y" name="y" required="true" type="integer" value="240"/>
+        <property caption="Width" name="width" required="true" type="integer" value="60"/>
+        <property caption="Height" name="height" required="true" type="integer" value="60"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="BACK_SLASH"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="0.5072464" y="1.0"/>
+        <output number="2" x="1.0" y="0.5072464"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="16" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="320"/>
+        <property caption="Y" name="y" required="true" type="integer" value="130"/>
+        <property caption="Width" name="width" required="true" type="integer" value="60"/>
+        <property caption="Height" name="height" required="true" type="integer" value="60"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="FORWARD_SLASH"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="1.0" y="0.5217391"/>
+    </element>
+    <element designTimeView="gov.fnal.controls.applications.synoptic.builder.element.variant.VisualComponent" help-url="/LineStateIndicator" id="17" implementation="gov.fnal.controls.applications.synoptic.runtime.visualization.LineIndicator" maxInputs="1" maxOutputs="64" minInputs="1" minOutputs="0" name="Line Indicator">
+        <desc>A line state indicator.;</desc>
+        <property caption="X" name="x" required="true" type="integer" value="210"/>
+        <property caption="Y" name="y" required="true" type="integer" value="240"/>
+        <property caption="Width" name="width" required="true" type="integer" value="60"/>
+        <property caption="Height" name="height" required="true" type="integer" value="60"/>
+        <property caption="Minimum Normal Value" name="minValue" required="false" type="double" value="0.0"/>
+        <property caption="Maximum Normal Value" name="maxValue" required="false" type="double" value="0.0"/>
+        <property caption="Invert State" name="invert" required="false" type="boolean" value="false"/>
+        <property caption="Orientation" name="orient" required="true" type="lineorientation" value="FORWARD_SLASH"/>
+        <property caption="Stroke Color FALSE/OFF/OPEN" name="strokeColor0" required="false" type="color" value="limegreen"/>
+        <property caption="Stroke Color TRUE/ON/CLOSED" name="strokeColor1" required="false" type="color" value="crimson"/>
+        <property caption="Stroke Width" name="strokeWidth" required="true" type="double" value="1.0"/>
+        <input number="1" x="0.0" y="0.4871795"/>
+        <output number="2" x="0.4871795" y="1.0"/>
+    </element>
+    <link path="M 311 59 L 305 110 " source="9" source_pin="8" target="10" target_pin="1"/>
+    <link path="M 283 110 L 258 90 L 238 110 L 239 130 " source="10" source_pin="2" target="14" target_pin="1"/>
+    <link path="M 210 159 L 180 159 L 170 189 L 190 206 " source="14" source_pin="2" target="12" target_pin="1"/>
+    <link path="M 190 226 L 170 241 L 190 271 L 210 269 " source="12" source_pin="2" target="17" target_pin="1"/>
+    <link path="M 239 299 L 239 329 L 259 339 L 283 319 " source="17" source_pin="2" target="11" target_pin="1"/>
+    <link path="M 305 319 L 330 339 L 350 319 L 350 299 " source="11" source_pin="2" target="15" target_pin="1"/>
+    <link path="M 379 270 L 399 270 L 419 250 L 399 225 " source="15" source_pin="2" target="13" target_pin="1"/>
+    <link path="M 399 203 L 420 190 L 409 158 L 379 161 " source="13" source_pin="2" target="16" target_pin="1"/>
+</element>

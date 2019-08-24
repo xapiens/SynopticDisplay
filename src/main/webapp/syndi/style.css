@@ -1,0 +1,171 @@
+/*  (c) 2001-2010 Fermi Research Alliance
+ *  $Id: style.css,v 1.2 2010/09/14 20:50:44 apetrov Exp $
+ */
+
+body, html {
+    padding: 0;
+    margin: 0;
+}
+
+body { 
+    font-family: Verdana,Arial,Sans-Serif;
+    font-size: 10pt;
+    background-color: #fff;
+    color: #000;
+}
+
+#container {
+    position: relative;
+    width: 760px;
+    margin: 0 auto;
+    padding: 0px;
+    text-align: left;
+}
+
+#navigation {
+    margin: -10px 0 20px 0;
+    padding-bottom: 10px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #669;
+    color: #666;
+    text-align: center;
+}
+
+h1 {
+    margin: 10px 0 20px 0;
+    font-size: 1.8em;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    letter-spacing: 0.1em;
+    background-color: #669;
+}
+
+h2 {
+    font-size: 150%;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #669;
+}
+
+#footer {
+    margin: 20px 0 5px 0;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+th, td {
+    padding: 0.25em 0.5em;
+    border: 1px solid #666;
+    font-weight: normal;
+}
+
+th {
+    background-color: #ccc;
+    text-align: center;
+}
+
+td {
+    white-space: nowrap;
+}
+
+table.param {
+    border-collapse: separate;
+    border-spacing: 1px;
+    width: auto;
+    border: 1px solid #666;
+}
+
+.param th {
+    width: auto;
+    text-align: right;
+    border: none;
+    background-color: #ccc;
+}
+
+.param td {
+    width: auto;
+    text-align: left;
+    border: none;
+}
+
+.param td.tip {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+a {
+    color: #00c;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #c00;
+    background-color: #ff9;
+    text-decoration: underline;
+}
+
+#navigation a {
+    font-weight: bold;
+    color: #669;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.1em 0.25em;
+    margin: 0 0.25em;
+}
+
+#navigation a.current {
+    background-color: #ccc;
+}
+
+#navigation a:hover {
+    color: #c00;
+    background-color: #fff;
+    text-decoration: underline;
+}
+
+#navigation a.current:hover {
+    color: #669;
+    cursor: default;
+    background-color: #ccc;
+    text-decoration: none;
+}
+
+div.reccount {
+    font-size: 0.8em;
+    text-align: right;
+    color: #666;
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
+
+div.warning {
+    margin: 10px 0 10px 20px;
+    color: #f00;
+    display: list-item;
+    list-style-type: square;
+    
+}

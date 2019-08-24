@@ -1,0 +1,321 @@
+                                 R E A D M E
+
+
+Product Name:           Java Synoptic Toolkit
+Product Version:        4.3
+Date (mm/dd/yyyy):      09/16/2010
+
+------------------------------------------------------------------------
+
+                                   ORIGIN
+                                   ======
+Authors
+
+    Andrey Petrov, Timofei Bolshakov
+    Fermi National Accelerator Laboratory - Mail Station 360
+    P.O Box 500
+    Batavia, IL 60510
+    Internet: synoptic-support@fnal.gov
+
+Fermilab Standard Government Sponsorship Notice
+
+    This work was performed at Fermi National Accelerator Laboratory,
+    which is operated by Universities Research Association, Inc., under
+    contract DE-AC02-76CHO3000 with the U.S. Department of Energy.
+
+Acknowledgements
+
+    The initial idea for Synoptic came from the ACNET Lex SA application
+    developed in 1990's by Brian Hendricks. The current version of the system
+    is the result of the cooperative effort of many people, who helped with
+    development, testing, and deployment. Thanks to Brian DeGraff, our very
+    first user, as well as Denise Finstrom, Gary Ganster, Sharon Lackey,
+    William Marsh, and Dennis Nicklaus.
+    
+------------------------------------------------------------------------
+
+			     TERMS AND CONDITIONS
+			     ====================
+
+This software has been made freely available with a request for
+collaborative input subject to standard Fermitools Terms and Conditions
+given in full below.
+
+------------------------------------------------------------------------
+
+                             PRODUCT DESCRIPTION
+                             ===================
+
+Synoptic (http://synoptic.fnal.gov) is a system for graphical representation of
+real-time data in the Fermilab Accelerator Control System. It offers a means for
+domain experts to create, in a short time, coherent displays representing a
+machine or a process, along with actual readings from the control system
+indicating its current state. The displays can run either within a Java
+application, or in a conventional web browser as SVG images updated on the fly.
+Synoptic also optionally supports setting data back to the control system. The
+end users do not have to be familiar with programming, because displays are
+composed in a high-level graphical editor from preexisting building blocks:
+gauges, alarm indicators, static shapes, and such. Similarly, the runtime
+environment takes care of all internal "plumbing and wiring" between components
+and hides the complexity of the actual data acquisition protocols.
+
+The open-source Java Synoptic Toolkit includes a core of Synoptic, free of
+dependencies from the proprietary infrastructure. It can be used with any data
+acquisition system, providing that an appropriate data access interface is
+developed. The product can be customized in a variety of ways, for instance, by
+developing specialized components for rendering data.
+
+The Toolkit consists of the following:
+
+    * A basic set of components.
+
+    * Display Runtime Environment, including the SVG renderer.
+
+    * The Builder application, for editing displays.
+
+    * The Viewer application, for running displays on client computers.
+
+    * A set of servlets for passing SVG snapshots over HTTP.
+
+
+Documentation
+-------------
+
+Online documentation is available at http://synoptic.fnal.gov/doc
+
+Required Hardware and Software
+------------------------------
+
+Java SE R6
+Apache Tomcat 6.0
+Apache Ant 1.7+ (needed only for building the project from source)
+
+Product Installation
+--------------------
+
+The full distribution of Java Synoptic Tollkit consists of the following
+directory layout:
+
+synoptic-XXX
+  |
+  +--- build/                       // compiled code *)
+  |
+  +--- dist/                        // packaged libraries *)
+  |      |  |      |
+  |      +--- syndi.jar             // main library
+  |      |
+  |      +--- syndi.war             // web application
+  |
+  +--- examples/                    // display examples
+  |
+  +--- lib/                         // third-party libraries
+  |
+  +--- src
+  |      |
+  |      +--- main
+  |             |
+  |             +--- java           // java source
+  |             |
+  |             +--- webapp         // web application source
+  |
+  +--- README, build.xml, version   // basic information
+
+*) These directories are created by the building script.
+
+To build Java Synoptic Toolkit from its source, go to the project's root
+directory and call ant with no arguments.
+
+Running the Software
+--------------------
+
+In order to run the Synoptic applications (Viewer or Builder), the Java
+classpath should include the following libraries:
+
+    syndi.jar
+    jlfgr-1_0.jar
+    commons-codec-1.4.jar
+
+The applications can be started as follows:
+
+    gov.fnal.controls.applications.syndi.Synoptic [<mode>] [<file-uri>],
+
+where
+
+    mode:
+
+        -v or --viewer       Open the Viewer application (default option)
+        -b or --builder      Open the Builder application
+        -h or --help         Show a short help
+
+    file-uri:
+
+        Optional argument telling the program which display file to open.
+        To open a display file from the local file system, the URI should start
+        with a "file:" prefix and (usually) have an ".xml" extension.
+        For instance,
+
+            file:/home/apetrov/default-display.xml
+
+        specifies a file in a user's home directory. To open a file from
+        the central repository, its URI should start with a "repo:" prefix
+        and have no extension. For instance,
+
+            repo:/Demo/Gauges
+
+        is the name of a valid test display from the Fermilab repository.
+        The default prefix is "repo:", that is, if the file URI includes
+        only the file name, the application will always go to the central
+        repository.
+
+        Please note that the file name should always be absolute. Also,
+        as the central repository is accessed via web services, the
+        Synoptic web application must be properly configured and running.
+
+The project jar file includes appropriate information about the main class and
+the classpath (in a manner that jlfgr-1_0.jar and commons-codec-1.4.jar are in
+a lib/ subdirectory). Thus, the simplest way to launch Synoptic is to go to dist/
+and type the following command:
+
+    java -jar syndi.jar
+
+A more general way of starting the program would be something like:
+
+    java -cp dist/syndi.jar:lib/jlfgr-1_0.jar:lib/commons-codec-1.4.jar \
+    gov.fnal.controls.applications.syndi.Synoptic
+
+In order to launch the Synoptic web application, simply drop syndi.war
+in the Tomcat's application area (usually $TOMCAT_ROOT/webapps).
+
+Configuration
+-------------
+
+Most functions in the Synoptic applications will work by default. However, to use
+the web services and the central repository the system must be properly configured.
+The main configuration file is
+
+    gov/fnal/controls/applications/syndi/config.xml
+
+The file contains default values for all Java system properties used by Synoptic.
+Once you decided to set up a productional version of the system, it is good idea
+to edit this file and rebuild the source code.
+
+The default properties can be overwritten in two ways:
+
+    *   For Synoptic applications, a new property value can be specified via
+        -D option. For instance,
+
+            java -DSynoptic.svg-update-rate=2000 ...
+
+    *   In the web application, a file $WEBAPP_ROOT/WEB-INF/config.xml
+        can be used to overwrite the default properties.
+
+A more elegant way of customizing Synoptic applications is to override the main
+class, gov.fnal.controls.applications.syndi.Synoptic, and in the constructor of the
+new class call
+
+    SynopticConfig.getInstance().load( custom_config_url );
+
+This will append data from the custom configuration file to the default
+configuration.
+
+A minimum configuration required by a custom installation of Synoptic system
+requires two parameters:
+
+    1. The client applications should know a root URL of the central repository
+       to download display data over HTTP. This is set via a
+       "Synoptic.repository-root" system property. If this property is not set,
+       the "Download & Open" action is disabled in GUI. The users can still open
+       displays from regular files on the file system.
+
+    2. The Synoptic web server should know a root directory of the central
+       repository. This is configured via "Synoptic.file-repository-root" property
+       in WEB-INF/config.xml. By default, the property is set to
+       "/home/synoptic/repository". If the specified directory is not available,
+       the server will not work. In a fresh installation, a small set of working
+       display is provided in examples/. Either create a symlink in the default
+       location pointing to examples/, or update the property in the configuration
+       file.
+
+Data Access Interface
+---------------------
+
+In order to connect Synoptic with a custom data acquisition system, build an
+adapter class implementing
+
+    gov.fnal.controls.applications.syndi.runtime.daq.DaqInterface
+
+Also implement a factory class extending
+
+    gov.fnal.controls.applications.syndi.runtime.daq.DaqInterfaceFactory
+
+and specify a full name of it in the "Synoptic.daq" system property.
+
+------------------------------------------------------------------------
+
+				   SUPPORT
+				   =======
+
+Help with the installation or use of Java Synoptic Toolkit is available
+by sending mail to
+
+			    synoptic-support@fnal.gov
+
+which is auto-forwarded to the group in charge of Java Synoptic Toolkit
+support at Fermilab.
+
+This software is furnished by Fermilab on an "as is" basis as a service 
+to the wider community with the goal of stimulating collaborative use 
+and further development.
+
+Provision of the software implies no commitment of support by Fermilab.
+
+The Fermilab Computing Division is open to discussing other levels of 
+support for use of the software with responsible and committed users and 
+collaborators.
+
+Use of the software in experiments at Fermilab will be assured of a 
+level of support as agreed to through the standard Memorandum Of 
+Understanding process.
+
+Users may send mail to the mail address given above, with the 
+expectation that it will be read and noted.
+
+
+------------------------------------------------------------------------
+
+			 TERMS AND CONDITIONS IN FULL
+			 ============================
+			 
+------------------------------------------------------------------------
+Fermilab Software Legal Information (BSD License) - August 11, 2009
+------------------------------------------------------------------------
+
+Copyright (c) 2009, FERMI NATIONAL ACCELERATOR LABORATORY
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+this list of conditions and the following disclaimer in the documentation and/or 
+other materials provided with the distribution.
+    * Neither the name of the FERMI NATIONAL ACCELERATOR LABORATORY, nor the names 
+of its contributors may be used to endorse or promote products derived from this 
+software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE. 
+
+------------------------------------------------------------------------
+
+

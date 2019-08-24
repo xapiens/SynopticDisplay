@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: arc14.xml,v 1.2 2010/09/15 16:36:30 apetrov Exp $ -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:syndi="http://synoptic.fnal.gov/2008/display"
+        syndi:help-url="/StaticImages">
+    <title>&#188; Arc</title>
+    <syndi:icon mime-type="image/png">
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAMUlEQVR42mNgGAUI8B8NU91g
+        mrl46BjMQGuDh56raW740Hb9aNCMun4kun54WDA0AQACBxrm4uZ1fwAAAABJRU5ErkJggg==
+    </syndi:icon>
+    <g stroke="black" fill="none" stroke-width="1">
+        <path d="M0 30C0 13.432 13.432 0 30 0"/>
+    </g>
+</svg>

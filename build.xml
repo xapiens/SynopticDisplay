@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<!-- $Id: -->
+
+<project name="syndi" default="build" basedir=".">
+
+    <property name="source.dir" value="src/main/java"/>
+    <property name="webapp.dir" value="src/main/webapp"/>
+    <property name="build.dir" value="build"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="dist.prefix" value="syndi"/>
+    <property name="code.version" value="1.6"/>
+    
+    <property name="jar.main.class" value="gov.fnal.controls.applications.syndi.Synoptic"/>
+    <property name="jar.classpath" value="lib/commons-codec-1.4.jar lib/jlfgr-1_0.jar"/>
+
+    <target name="build" depends="compile,pack"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="prepare">
+        <loadfile property="version.id" srcfile="version">
+            <filterchain>
+                <filterreader classname="org.apache.tools.ant.filters.StripLineBreaks"/>
+            </filterchain>
+        </loadfile>
+    </target>
+
+    <target name="compile" depends="prepare">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${source.dir}" destdir="${build.dir}" fork="true"
+                encoding="UTF-8" optimize="true"
+                source="${code.version}" target="${code.version}">
+            <!--
+            <compilerarg value="-Xlint"/>
+            <compilerarg value="-Xlint:-serial"/>
+            -->
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+        <copy todir="${build.dir}">
+            <fileset dir="${source.dir}">
+                <include name="**/*.xml"/>
+                <include name="**/*.png"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="pack" depends="prepare">
+
+        <delete dir="${dist.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+
+        <property name="dist.file" value="${dist.dir}/${dist.prefix}"/>
+
+        <jar jarfile="${dist.file}.jar" basedir="${build.dir}">
+            <metainf file="README"/>
+            <manifest>
+                <attribute name="Implementation-Title" value="Synoptic"/>
+                <attribute name="Implementation-Version" value="${version.id}"/>
+                <attribute name="Implementation-Vendor" value="Fermilab"/>
+                <attribute name="Implementation-URL" value="http://synoptic.fnal.gov/"/>
+                <attribute name="Main-Class" value="${jar.main.class}"/>
+                <attribute name="Class-Path" value="${jar.classpath}"/>
+            </manifest>
+        </jar>
+
+        <war destfile="${dist.file}.war" basedir="${webapp.dir}/syndi">
+            <metainf file="README"/>
+            <manifest>
+                <attribute name="Implementation-Title" value="Synoptic"/>
+                <attribute name="Implementation-Version" value="${version.id}"/>
+                <attribute name="Implementation-Vendor" value="Fermilab"/>
+                <attribute name="Implementation-URL" value="http://synoptic.fnal.gov/"/>
+            </manifest>
+            <lib dir="${lib.dir}">
+                <exclude name="servlet*.jar"/>
+                <exclude name="jlfgr*.jar"/>
+            </lib>
+            <lib dir="${dist.dir}">
+                <exclude name="${dist.file}.jar"/>
+            </lib>
+        </war>
+
+        <mkdir dir="${dist.dir}/lib"/>
+        <copy todir="${dist.dir}/lib">
+            <fileset dir="${lib.dir}">
+                <include name="commons-codec*.jar"/>
+                <include name="jlfgr*.jar"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+
+
+</project>
+
+
